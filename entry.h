@@ -1,6 +1,20 @@
 #ifndef ENTRY_H
 #define ENTRY_H
 
+#define ENTRY_SIZE      200
+#define HEADER_SIZE      10
+#define SITE_OFFSET      10
+#define SITE_SIZE        50
+#define USERNAME_OFFSET  60
+#define USERNAME_SIZE    70
+#define PASSWORD_OFFSET 130
+#define PASSWORD_SIZE    70
+
+//entries are 200B long
+    //bytes 0-9: header
+    //10-59: site
+    //60-129: username
+    //130-199: password
 struct Entry {
     char site[50];
     char username[70];

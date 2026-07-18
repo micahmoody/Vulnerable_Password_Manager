@@ -19,11 +19,12 @@ void copy_file(char *buffer) {
         buffer[i] = c;
         i += 1;
     }
+    buffer[i] = '\0';
     fclose(fp);
 }
 
 void push_entry(char *str) {
     FILE *fp = fopen("entries.txt", "a");
-    fwrite(str, 200, 1, fp);
+    fwrite(str, ENTRY_SIZE, 1, fp);
     fclose(fp);
 }

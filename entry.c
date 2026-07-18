@@ -3,28 +3,26 @@
 #include "entry.h"
 
 void format_entry(char *buffer, struct Entry *reference) {
-
     strcpy(buffer, "\nNEWENTRY:");
-    memcpy(buffer + 10, &(reference -> site), 50);
-    memcpy(buffer + 60, &(reference -> username), 70);
-    memcpy(buffer + 130, &(reference -> password), 70);
-    //entries are 200B long
-    //bytes 0-9: header
-    //10-59: site
-    //60-129: username
-    //130-199: password
+    memcpy(buffer + SITE_OFFSET, &(reference -> site), SITE_SIZE);
+    memcpy(buffer + USERNAME_OFFSET, &(reference -> username), USERNAME_SIZE);
+    memcpy(buffer + PASSWORD_OFFSET, &(reference -> password), PASSWORD_SIZE);
 }
 
 void get_entry(struct Entry *dest, char *file, char *site) {
-    char *loc = strstr(file, site);
-    memcpy(&(dest -> site), loc, 50);
-    memcpy(&(dest -> username), loc + 50, 70);
-    memcpy(&(dest -> password), loc + 130, 70);
+    char *loc = strstr(file, site) - SITE_OFFSET;
+    if (loc == NULL) {
+        printf("entry with site %s not found, no action taken", site);
+    } else {
+        memcpy(&(dest -> site), loc, SITE_SIZE);
+        memcpy(&(dest -> username), loc + USERNAME_OFFSET, USERNAME_SIZE);
+        memcpy(&(dest -> password), loc + PASSWORD_OFFSET, PASSWORD_SIZE);
+    }
 }
 
 void print_entry(char *str) {
     int i;
-    for (i = 0; i < 200; i += 1) {
+    for (i = 0; i < ENTRY_SIZE; i += 1) {
         if (str[i] == '\0') {
             printf("_");
             continue;
