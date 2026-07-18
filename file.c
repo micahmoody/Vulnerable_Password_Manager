@@ -9,6 +9,21 @@ int get_file_length() {
         count += 1;
     }
     fclose(fp);
-    //if file is empty, return 0. otherwise, account for \0 in string
-    return (count - 1) < 0 ? 0 : count - 1;
+    return count;
+}
+
+void copy_file(char *buffer) {
+    int c, i = 0;
+    FILE *fp = fopen("entries.txt", "r");
+    while((c = fgetc(fp)) != EOF) {
+        buffer[i] = c;
+        i += 1;
+    }
+    fclose(fp);
+}
+
+void push_entry(char *str) {
+    FILE *fp = fopen("entries.txt", "a");
+    fwrite(str, 200, 1, fp);
+    fclose(fp);
 }
