@@ -28,3 +28,9 @@ void push_entry(char *str) {
     fwrite(str, ENTRY_SIZE, 1, fp);
     fclose(fp);
 }
+
+void overwrite(char *data, int size) {
+    FILE *fp = fopen("entries.txt", "wb");
+    fwrite(data, size, 1, fp);
+    fclose(fp);
+}

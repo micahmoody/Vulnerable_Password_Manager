@@ -12,7 +12,7 @@ void clear_input_buffer() {
 void iadd_entry() {
     struct Entry entry_buffer;
     char formatted_result[ENTRY_SIZE + 1];
-    prompt_site_1(entry_buffer.site);
+    prompt_site(entry_buffer.site, PROMPT_SITE_1);
     prompt_username(entry_buffer.username);
     prompt_password(entry_buffer.password);
     format_entry(formatted_result, &entry_buffer);
@@ -25,7 +25,7 @@ void isearch_entry() {
     char site[SITE_SIZE + 1];
     char file_buffer[len + 1];
     struct Entry entry;
-    prompt_site_2(site);
+    prompt_site(site, PROMPT_SITE_2);
     copy_file(file_buffer);
     int found = get_entry(&entry, file_buffer, len, site);
     if (found) {
@@ -33,6 +33,17 @@ void isearch_entry() {
     } else {
         printf(SEARCH_FAIL);
     }
+}
+
+void iremove_entry() {
+    int len = get_file_length();
+    char file_buffer[len + 1];
+    char file_buffer_removed[len - ENTRY_SIZE];
+    char site[SITE_SIZE];
+    prompt_site(site, PROMPT_SITE_3);
+    copy_file(file_buffer);
+    remove_entry(file_buffer_removed, file_buffer, len, site);
+    overwrite(file_buffer_removed, len + 1 - ENTRY_SIZE);
 }
 
 void iinvalid_mode() {
@@ -46,14 +57,8 @@ char prompt_mode() {
     return c;
 }
 
-void prompt_site_1(char *buffer) {
-    printf(PROMPT_SITE_1);
-    fgets(buffer, SITE_SIZE, stdin);
-    buffer[strcspn(buffer, "\n")] = '\0';
-}
-
-void prompt_site_2(char *buffer) {
-    printf(PROMPT_SITE_2);
+void prompt_site(char *buffer, char *prompt) {
+    printf(prompt);
     fgets(buffer, SITE_SIZE, stdin);
     buffer[strcspn(buffer, "\n")] = '\0';
 }

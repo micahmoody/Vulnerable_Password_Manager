@@ -5,5 +5,6 @@
 int get_file_length();
 void copy_file(char *buffer);
 void push_entry(char *str);
+void overwrite(char *data, int size);
 
 #endif

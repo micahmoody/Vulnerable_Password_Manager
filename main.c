@@ -14,6 +14,9 @@ void ui() {
         case '2':
             isearch_entry();
             ui();
+        case '3':
+            iremove_entry();
+            ui();
         case '5':
             return;
         default: 

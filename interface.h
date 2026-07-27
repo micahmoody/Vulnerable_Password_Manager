@@ -11,6 +11,8 @@
 
 #define PROMPT_SITE_2 "\nPassword Manager: Search for entry\n----------------------------------\nEnter site: "
 
+#define PROMPT_SITE_3 "\nPassword Manager: Delete entry\n------------------------------\nEnter site: "
+
 #define PROMPT_USERNAME "\nEnter username: "
 
 #define PROMPT_PASSWORD "\nEnter password: "
@@ -21,11 +23,10 @@
 
 #define SEARCH_FAIL "\nEntry not found\n"
 
-#define INVALID_MODE "\nPlease ender a number 1-5\n"
+#define INVALID_MODE "\nPlease enter a number 1-5\n"
 
 char prompt_mode();
-void prompt_site_1(char *buffer);
-void prompt_site_2(char *buffer);
+void prompt_site(char *buffer, char *prompt);
 void prompt_username(char *buffer);
 void prompt_password(char *buffer);
 void print_entry(struct Entry *entry);
@@ -33,5 +34,6 @@ void iinvalid_mode();
 
 void isearch_entry();
 void iadd_entry();
+void iremove_entry();
 
 #endif
