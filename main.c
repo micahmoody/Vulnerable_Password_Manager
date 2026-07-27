@@ -20,6 +20,10 @@ void ui() {
             iremove_entry();
             ui();
             break;
+        case '4':
+            ilist_entries();
+            ui();
+            break;
         case '5':
             return;
         default: 

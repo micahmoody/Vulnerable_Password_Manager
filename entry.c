@@ -35,6 +35,16 @@ int remove_entry(char *dest, char *file, int filelen, char *site) {
     return 1;
 }
 
+void print_all_sites(char *file, int filelen) {
+    int index = SITE_OFFSET;
+    printf("\n");
+    while (index < filelen) {
+        printf("%s, ", file + index);
+        index += ENTRY_SIZE;
+    }
+    printf("\n");
+}
+
 void print_raw_entry(char *str) {
     int i;
     for (i = 0; i < ENTRY_SIZE; i += 1) {

@@ -35,5 +35,6 @@ void iinvalid_mode();
 void isearch_entry();
 void iadd_entry();
 void iremove_entry();
+void ilist_entries();
 
 #endif

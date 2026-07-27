@@ -22,6 +22,7 @@ struct Entry {
 };
 
 void format_entry(char *buffer, struct Entry *reference);
+void print_all_sites(char *file, int filelen);
 int get_entry(struct Entry *dest, char *file, int filelen, char *site);
 int remove_entry(char *dest, char *file, int filelen, char *site);
 char *memmem(char *src, int srclen, char *match, int matchlen);

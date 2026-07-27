@@ -46,6 +46,13 @@ void iremove_entry() {
     overwrite(file_buffer_removed, len + 1 - ENTRY_SIZE);
 }
 
+void ilist_entries() {
+    int len = get_file_length();
+    char file_buffer[len + 1];
+    copy_file(file_buffer);
+    print_all_sites(file_buffer, len);
+}
+
 void iinvalid_mode() {
     printf(INVALID_MODE);
 }
