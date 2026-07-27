@@ -5,7 +5,7 @@
 
 #include "entry.h"
 
-#define PROMPT_MODE "\nPassword Manager\n----------------\n1. Add entry\n2. Search\n 3. Delete\n4. List\n5. Quit\nEnter choice [1/2/3/4/5]: "
+#define PROMPT_MODE "\nPassword Manager\n----------------\n1. Add entry\n2. Search\n3. Delete\n4. List\n5. Quit\nEnter choice [1/2/3/4/5]: "
 
 #define PROMPT_SITE_1 "\nPassword Manager: Add entry\n---------------------------\nEnter site: "
 
