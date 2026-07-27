@@ -22,7 +22,7 @@ struct Entry {
 };
 
 void format_entry(char *buffer, struct Entry *reference);
-void get_entry(struct Entry *dest, char *file, char *site);
-void print_entry(char *str);
+int get_entry(struct Entry *dest, char *file, char *site);
+void print_raw_entry(char *str);
 
 #endif

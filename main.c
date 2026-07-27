@@ -7,8 +7,13 @@ int main() {
 
     char mode = prompt_mode();
 
+    printf("\ndebug:mode: %c", mode);
+
     if (mode == '1') {
         iadd_entry();
+    }
+    if (mode == '2') {
+        isearch_entry();
     }
 
     return 0;

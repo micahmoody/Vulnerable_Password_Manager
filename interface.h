@@ -1,22 +1,34 @@
 #include <stdio.h>
+
 #ifndef INTERFACE_H
 #define INTERFACE_H
 
-#define PROMPT_MODE "\nPassword Manager\n----------------\n1. Add entry\n2. Search\n 3. Delete\n4. List\n5. Quit\nEnter choice [1/2/3/4/5]:"
+#include "entry.h"
 
-#define PROMPT_SITE "\nPassword Manager: Add entry\n---------------------------\nEnter site:"
+#define PROMPT_MODE "\nPassword Manager\n----------------\n1. Add entry\n2. Search\n 3. Delete\n4. List\n5. Quit\nEnter choice [1/2/3/4/5]: "
 
-#define PROMPT_USERNAME "\nEnter username:"
+#define PROMPT_SITE_1 "\nPassword Manager: Add entry\n---------------------------\nEnter site: "
 
-#define PROMPT_PASSWORD "\nEnter password:"
+#define PROMPT_SITE_2 "\nPassword Manager: Search for entry\n----------------------------------\nEnter site: "
+
+#define PROMPT_USERNAME "\nEnter username: "
+
+#define PROMPT_PASSWORD "\nEnter password: "
 
 #define ADD_SUCCESS "\nAdded entry successfully."
 
+#define ENTRY_RETRIEVE "\nFound entry for site %s:\n"
+
+#define SEARCH_FAIL "\nEntry not found\n"
+
 char prompt_mode();
-void prompt_site(char *buffer);
+void prompt_site_1(char *buffer);
+void prompt_site_2(char *buffer);
 void prompt_username(char *buffer);
 void prompt_password(char *buffer);
+void print_entry(struct Entry *entry);
 
+void isearch_entry();
 void iadd_entry();
 
 #endif
