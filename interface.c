@@ -23,11 +23,11 @@ void iadd_entry() {
 void isearch_entry() {
     int len = get_file_length();
     char site[SITE_SIZE + 1];
-    char file_buffer[len];
+    char file_buffer[len + 1];
     struct Entry entry;
     prompt_site_2(site);
     copy_file(file_buffer);
-    int found = get_entry(&entry, file_buffer, site);
+    int found = get_entry(&entry, file_buffer, len, site);
     if (found) {
         print_entry(&entry);
     } else {

@@ -7,8 +7,6 @@ int main() {
 
     char mode = prompt_mode();
 
-    printf("\ndebug:mode: %c", mode);
-
     if (mode == '1') {
         iadd_entry();
     }

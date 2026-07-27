@@ -10,13 +10,13 @@ void format_entry(char *buffer, struct Entry *reference) {
     memcpy(buffer + PASSWORD_OFFSET, &(reference -> password), PASSWORD_SIZE);
 }
 
-int get_entry(struct Entry *dest, char *file, char *site) {
-    char *loc = strstr(file, site);
+int get_entry(struct Entry *dest, char *file, int filelen, char *site) {
+    char *loc = (char *)memmem(file, filelen, site, strlen(site));
     if (loc == NULL) {
         return 0;
     } else {
         loc -= SITE_OFFSET;
-        memcpy(&(dest -> site), loc, SITE_SIZE);
+        memcpy(&(dest -> site), loc + SITE_OFFSET, SITE_SIZE);
         memcpy(&(dest -> username), loc + USERNAME_OFFSET, USERNAME_SIZE);
         memcpy(&(dest -> password), loc + PASSWORD_OFFSET, PASSWORD_SIZE);
     }
@@ -32,4 +32,21 @@ void print_raw_entry(char *str) {
         }
         printf("%c", str[i]);
     }
+}
+
+char *memmem(char *src, int srclen, char *match, int matchlen) {
+    int i, j, m;
+    for (i = 0; i <= srclen - matchlen; i += 1) {
+        m = 1;
+        for (j = 0; j < matchlen; j += 1) {
+            if (src[i + j] != match[j]) {
+                m = 0;
+                break;
+            }
+        }
+        if (m) {
+            return src + i;
+        }
+    }
+    return NULL;
 }
