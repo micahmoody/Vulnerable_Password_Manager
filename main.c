@@ -3,11 +3,6 @@
 #include "file.h"
 #include "interface.h"
 
-int main() {
-    ui();
-    return 0;
-}
-
 void ui() {
 
     char mode = prompt_mode();
@@ -27,3 +22,9 @@ void ui() {
     }
 
 }
+
+int main() {
+    ui();
+    return 0;
+}
+

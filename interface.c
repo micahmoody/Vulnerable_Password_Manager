@@ -35,6 +35,10 @@ void isearch_entry() {
     }
 }
 
+void iinvalid_mode() {
+    printf(INVALID_MODE);
+}
+
 char prompt_mode() {
     printf(PROMPT_MODE);
     char c = getchar();

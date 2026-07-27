@@ -23,6 +23,18 @@ int get_entry(struct Entry *dest, char *file, int filelen, char *site) {
     return 1;
 }
 
+int remove_entry(char *dest, char *file, int filelen, char *site) {
+    char *loc = memmem(file, filelen, site, strlen(site));
+    if (loc == NULL) {
+        return 0;
+    }
+    loc -= SITE_OFFSET;
+    int index = loc - file;
+    memcpy(dest, file, index);
+    memcpy(dest + index, loc + ENTRY_SIZE, (filelen - index) - ENTRY_SIZE);
+    return 1;
+}
+
 void print_raw_entry(char *str) {
     int i;
     for (i = 0; i < ENTRY_SIZE; i += 1) {
